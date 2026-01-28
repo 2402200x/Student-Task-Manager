@@ -3,6 +3,16 @@
 <p>
   To help students organize and track academic tasks through a simple task management web application.
 </p>
+<div>
+  <h4>Commands to run the code</h4>
+  <p>
+    cd backend
+  npm init
+  npm i express uuid cors
+  npm run dev
+
+  </p>
+</div>
 <h4>The Logic</h4>
 <p>Why did you choose this approach?
 
