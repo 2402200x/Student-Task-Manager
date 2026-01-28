@@ -1,67 +1,65 @@
-const express = require('express');
+
+const express = require("express");
+const uuid = require("uuid");
 const app = express();
+const cors = require("cors");
 
-// app.use(express.urlencoded({ extended: true }));
-
-
-const port = 5000;
-const bodyParser = require('body-parser');
-const uuid = require('uuid');
-const cors = require('cors');
+const PORT = 5000;
 
 app.use(express.json());
-app.use(bodyParser.json());
-// app.use(cors())
+app.use(cors());
 
+
+// We have to use data
 const todos = [
-    {
-        id: 1,
-        desc: "write python code",
-        completed: false,
-    },
-    {
-        id: 2,
-        desc: "write js code",
-        completed: true,
-    },
-]
+  {
+    id: 1,
+    name: "Complete OOPS Assignment",
+    completed: true,
+  },
+  {
+    id: 2,
+    name: "Solve 5 LeetCode Problems",
+    completed: false,
+  },
+  {
+    id: 3,
+    name: "login page UI",
+    completed: true,
+  },
+];
 
-app.get('/', (req, res) => {
-  res.send('<h1>Welcome to the Student Task Manager API</h1>');
+app.get("/", (req, res) => {
+  res.json({ msg: "Todo List Home Page" });
 });
 
-app.get('/todos', (req, res) => {
-    res.json(todos);    
+app.get("/todos", (req, res) => {
+  res.json(todos);
 });
 
-app.get('/todos/:id', (req, res) => {
-  console.log(req.params.id);
-  let todo = todos.filter((todo) => todo.id == req.params.id)
-  res.json(todo) 
+app.get("/todos/:id", (req, res) => {
+  let todo = todos.filter((todo) => todo.id == req.params.id);
+  res.json({ msg: "1 Todo", data: todo });
 });
 
-app.post("/todos", (req,res) => {
-    let body = req.body;
-    console.log(body)
-    todos.push({id: uuid.v4(), ...body});
-    res.json(todos)
+// GET, POST, PUT
+app.post("/todos", (req, res) => {
+  console.log(req.body);
+  todos.push({ id: uuid.v4(), ...req.body });
+  res.json({ msg: "Add Todo", data: todos });
 });
 
-app.put("/todos/:id", (req,res) => {
-    let todo = todos.find((todo) => todo.id == req.params.id);
-    if(todo){
-        todo.desc = req.body.desc;
-        todo.completed = req.body.completed;
-        // res.json(todos);
-    }else{
-        res.send("todo with given id does not exist")
-    }
-    res.json(todos)
-});
-app.delete("/todos/:id", (req,res) => {
-    res.json([])
+app.put("/todos/:id", (req, res) => {
+  let todo = todos.find((todo) => todo.id == req.params.id);
+  if (todo) {
+    todo.name = req.body.name;
+    todo.completed = req.body.completed;
+    res.json({ msg: "Edit Todo", data: todos });
+  } else {
+    res.json({ msg: "Todo not found." });
+  }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`App is running on PORT ${PORT}`);
 });
