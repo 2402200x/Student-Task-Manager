@@ -1,5 +1,8 @@
 # Student-Task-Manager
-
+<h4>Goal</h4>
+<p>
+  To help students organize and track academic tasks through a simple task management web application.
+</p>
 <h4>The Logic</h4>
 <p>Why did you choose this approach?
 
