@@ -22,11 +22,6 @@ const todos = [
     name: "Solve 5 LeetCode Problems",
     completed: false,
   },
-  {
-    id: 3,
-    name: "login page UI",
-    completed: true,
-  },
 ];
 
 app.get("/", (req, res) => {
