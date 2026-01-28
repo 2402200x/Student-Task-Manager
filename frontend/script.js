@@ -1,22 +1,7 @@
-// console.log("script loaded hello");
-// let backendData = fetch("http://localhost:5000/todos");
-
-// backendData
-//   .then((res) => res.json())
-//   .then((data) => console.log(data))
-//   .catch((err) => console.log(err))
-//   .finally(() => console.log("this is done"));
-
-
 const todoContainer = document.querySelector(".todo-container");
 const inputTodo = document.getElementById("input-todo");
 const addTodo = document.getElementById("add-todo");
 
-// const modalBG = document.querySelector(".modal-background");
-// const closeModal = document.querySelector("#close-modal");
-// const editTodoName = document.getElementById("edit-todo-name");
-// const editTodoCompleted = document.getElementById("edit-todo-completed");
-// const saveTodo = document.getElementById("save-todo");
 
 let todoArray = [];
 
@@ -52,55 +37,6 @@ async function post_todos() {
   }
 }
 
-// async function del_Todo(todoElem) {
-//   try {
-//     const del_url = URL + "/" + todoElem.id;
-//     console.log(del_url);
-//     const resp = await fetch(del_url, {
-//       method: "DELETE",
-//     });
-//     const data = await resp.json();
-//     return data;
-//   } catch (err) {
-//     return err;
-//   }
-// }
-
-// async function edit_Todo(todoElem) {
-//   try {
-//     let edit_url = URL + "/" + todoElem.id;
-//     let options = {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({
-//         id: todoElem.id,
-//         name: editTodoName.value,
-//         completed: editTodoCompleted.checked,
-//       }),
-//     };
-//     const resp = await fetch(edit_url, options);
-//     const data = await resp.json();
-//     return data;
-//   } catch (err) {
-//     return err;
-//   }
-// // }
-
-// function open_modal(todoElem) {
-//   editTodoName.value = todoElem.name;
-//   editTodoCompleted.checked = todoElem.completed;
-//   modalBG.style.display = "block";
-//   closeModal.addEventListener("click", () => {
-//     modalBG.style.display = "none";
-//   });
-//   saveTodo.addEventListener("click", () => {
-//     modalBG.style.display = "none";
-//     // edit_Todo(todoElem);
-//   });
-// }
-
 function display_Todos(todoArr) {
   todoArr.forEach((todoElem) => {
     console.log(todoElem);
@@ -124,26 +60,10 @@ function display_Todos(todoArr) {
     todoName.classList.add("todo-name");
     todoName.innerHTML = todoElem.name;
 
-    // let todoEdit = document.createElement("button");
-    // todoEdit.classList.add("todo-edit");
-    // todoEdit.innerHTML = "Edit";
-    // todoEdit.addEventListener("click", (e) => {
-    //   e.preventDefault();
-    //   console.log("Open modal");
-    //   open_modal(todoElem);
-    // });
-    // let todoDel = document.createElement("button");
-    // todoDel.classList.add("todo-delete");
-    // todoDel.innerHTML = "Delete";
-    // todoDel.addEventListener("click", (e) => {
-    //   console.log("Delete Todo");
-    //   del_Todo(todoElem);
-    // });
 
     todoInfo.appendChild(todoCompleted);
     todoInfo.appendChild(todoName);
-    // todoBtn.appendChild(todoEdit);
-    // todoBtn.appendChild(todoDel);
+   
 
     todo.appendChild(todoInfo);
     todo.appendChild(todoBtn);
